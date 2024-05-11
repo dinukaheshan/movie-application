@@ -1,20 +1,29 @@
-import logo from './logo.svg';
-import api from './api/axiosConfig';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
 
   const [movies, setMovies] = useState();
 
-  constGetMovies = async () => {
-    const response = await api.get('/movies');
-    setMovies(response.data);
-  }
+  const getMovies = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/v1/movies');
+      console.log(response.data);
+      setMovies(response.data);
+    }
+    catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(()=> {
+    getMovies();
+  },[]);
 
   return (
-    <div className="App">
+      <div className="App">
 
-    </div>
+      </div>
   );
 }
 
