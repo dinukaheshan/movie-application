@@ -3,6 +3,7 @@ import axios from 'axios';
 import Layout from "./components/Layout";
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
+import Header from "./components/header/Header";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
 
   return (
       <div className="App">
+        <Header/>
         <Routes>
           <Route path="/*" element={<Layout />}>
             <Route index element={<Home movies={movies} />} />
